@@ -169,11 +169,85 @@ main {
 }
 
 /* 3F Canvas */
+.canvas-wrapper {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#connections-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    /* Above background, below inputs */
+}
+
 .canvas-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     flex: 1;
+    z-index: 2;
+    /* Ensure inputs are above SVG */
+}
+
+/* Connection Handles */
+.input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.conn-handle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    cursor: crosshair;
+    z-index: 10;
+    transition: all 0.2s;
+}
+
+.conn-handle:hover {
+    background: var(--accent-color);
+    transform: translateY(-50%) scale(1.2);
+}
+
+.conn-handle.right {
+    right: -6px;
+}
+
+.conn-handle.left {
+    left: -6px;
+}
+
+/* SVG Paths */
+path.connector {
+    stroke: var(--text-secondary);
+    stroke-width: 2;
+    fill: none;
+    pointer-events: stroke;
+}
+
+path.connector:hover {
+    stroke: var(--accent-color);
+    stroke-width: 3;
+    cursor: pointer;
+}
+
+path.connector-temp {
+    stroke: var(--accent-color);
+    stroke-width: 2;
+    stroke-dasharray: 4;
+    fill: none;
 }
 
 .canvas-section {
@@ -263,6 +337,52 @@ main {
 
 .polisher-header h2 {
     font-size: 1rem;
+    font-weight: 600;
+}
+
+.polisher-controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.polisher-controls .btn {
+    flex: 1;
+}
+
+.audit-status {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    background: #f3f4f6;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.audit-status.pending span {
+    color: var(--text-secondary);
+}
+
+.audit-status.passed {
+    background: #ecfdf5;
+    border-color: #10b981;
+}
+
+.audit-status.passed span {
+    color: #047857;
+    font-weight: 600;
+}
+
+.audit-status.failed {
+    background: #fef2f2;
+    border-color: #ef4444;
+}
+
+.audit-status.failed span {
+    color: #b91c1c;
     font-weight: 600;
 }
 

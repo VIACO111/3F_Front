@@ -14,6 +14,7 @@
     <header>
         <div class="logo">3F System (PRIVATE DEMO)</div>
         <div class="header-actions">
+            <button id="save-btn" class="btn primary" disabled>Submit Signal (Audit Required)</button>
             <div class="pair-badge">
                 <span>Active Pair:</span>
                 <strong>Maya & Alex</strong>
@@ -36,48 +37,58 @@
                 </select>
             </div>
 
-            <div class="canvas-grid">
-                <!-- FORM -->
-                <article class="canvas-section form" id="form-section">
-                    <header class="canvas-header">
-                        <h2>Form</h2>
-                    </header>
-                    <div class="input-group" id="form-inputs">
-                        <textarea class="dimension-input"
-                            placeholder="What tangible objects, meetings, or tools are involved?"></textarea>
-                    </div>
-                    <button class="add-btn" data-section="form">+</button>
-                </article>
+            <div class="canvas-wrapper">
+                <svg id="connections-layer"></svg>
+                <div class="canvas-grid">
+                    <!-- FORM -->
+                    <article class="canvas-section form" id="form-section">
+                        <header class="canvas-header">
+                            <h2>Form</h2>
+                        </header>
+                        <div class="input-group" id="form-inputs">
+                            <textarea class="dimension-input"
+                                placeholder="What tangible objects, meetings, or tools are involved?"></textarea>
+                        </div>
+                        <button class="add-btn" data-section="form">+</button>
+                    </article>
 
-                <!-- FUNCTION -->
-                <article class="canvas-section function" id="function-section">
-                    <header class="canvas-header">
-                        <h2>Function</h2>
-                    </header>
-                    <div class="input-group" id="function-inputs">
-                        <textarea class="dimension-input"
-                            placeholder="What process or goal was being attempted?"></textarea>
-                    </div>
-                    <button class="add-btn" data-section="function">+</button>
-                </article>
+                    <!-- FUNCTION -->
+                    <article class="canvas-section function" id="function-section">
+                        <header class="canvas-header">
+                            <h2>Function</h2>
+                        </header>
+                        <div class="input-group" id="function-inputs">
+                            <textarea class="dimension-input"
+                                placeholder="What process or goal was being attempted?"></textarea>
+                        </div>
+                        <button class="add-btn" data-section="function">+</button>
+                    </article>
 
-                <!-- FEELING -->
-                <article class="canvas-section feeling" id="feeling-section">
-                    <header class="canvas-header">
-                        <h2>Feeling</h2>
-                    </header>
-                    <div class="input-group" id="feeling-inputs">
-                        <textarea class="dimension-input"
-                            placeholder="What was the emotional state of the participants?"></textarea>
-                    </div>
-                    <button class="add-btn" data-section="feeling">+</button>
-                </article>
+                    <!-- FEELING -->
+                    <article class="canvas-section feeling" id="feeling-section">
+                        <header class="canvas-header">
+                            <h2>Feeling</h2>
+                        </header>
+                        <div class="input-group" id="feeling-inputs">
+                            <textarea class="dimension-input"
+                                placeholder="What was the emotional state of the participants?"></textarea>
+                        </div>
+                        <button class="add-btn" data-section="feeling">+</button>
+                    </article>
+                </div>
             </div>
         </section>
 
         <aside class="sidebar">
             <div class="polisher-header">
                 <h2>AI Polisher</h2>
+                <div class="polisher-controls">
+                    <button id="polish-btn" class="btn secondary">✨ Polish</button>
+                    <button id="audit-btn" class="btn secondary">🛡️ Audit</button>
+                </div>
+                <div id="audit-status" class="audit-status pending">
+                    Status: <span>Not Audited</span>
+                </div>
             </div>
             <div class="suggestions-list" id="suggestions-list">
                 <!-- Suggestions will be injected here -->

@@ -84,17 +84,23 @@ async function analyzeSignal() {
     const anchorText = document.getElementById('anchor-select').value;
 
     // Only analyze if there's enough content across all inputs
-    if (formData.length < 5 && functionData.length < 5 && feelingData.length < 5) return;
+    if (formData.length < 3 && functionData.length < 3 && feelingData.length < 3) return;
 
     isThinking = true;
     lastAnalysisTime = now;
+
+    // UI Feedback: Show thinking state
+    const loader = document.createElement('div');
+    loader.className = 'suggestion-card thinking';
+    loader.innerHTML = '<p>The Polisher is thinking...</p>';
+    suggestionsList.prepend(loader);
 
     try {
         const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                contents: [{
+                system_instruction: {
                     parts: [{
                         text: `
                         You are the "AI Polisher" for the 3F System (Form, Function, Feeling).
@@ -111,7 +117,11 @@ async function analyzeSignal() {
                             - Form: The tangible (meetings, tools, policies).
                             - Function: The process/goal (decision-making, deployment).
                             - Feeling: The emotional state.
-                            
+                    `}]
+                },
+                contents: [{
+                    parts: [{
+                        text: `
                         Current Signal State:
                         Form Items:
                         - ${formData || 'None provided'}
@@ -133,12 +143,15 @@ async function analyzeSignal() {
         });
 
         const data = await response.json();
+        loader.remove(); // Remove thinking state
+
         if (data.candidates && data.candidates[0].content.parts[0].text) {
             const suggestion = data.candidates[0].content.parts[0].text;
             addSuggestion(suggestion);
         }
     } catch (error) {
         console.error('3F Polisher Error:', error);
+        loader.remove();
     } finally {
         isThinking = false;
     }

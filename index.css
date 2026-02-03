@@ -314,11 +314,6 @@ main {
     transform: scale(1.1);
 }
 
-textarea {
-    display: none;
-    /* Hide global textarea as we use .dimension-input */
-}
-
 /* AI Polisher Sidebar */
 .polisher-header {
     padding: 1.5rem;
@@ -363,6 +358,31 @@ textarea {
 .suggestion-card p {
     font-size: 0.875rem;
     margin-bottom: 1rem;
+}
+
+.suggestion-card.thinking {
+    border-style: dashed;
+    background: transparent;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.suggestion-card.thinking p {
+    margin-bottom: 0;
+    color: var(--text-secondary);
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
 }
 
 .suggestion-actions {

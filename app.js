@@ -1,9 +1,9 @@
-// 3F System - Frontend Logic with Gemini AI Integration
+// 3F System - Frontend Logic with dynamic inputs and Gemini AI Integration
 
 // UI Elements
-const formInput = document.getElementById('form-input');
-const functionInput = document.getElementById('function-input');
-const feelingInput = document.getElementById('feeling-input');
+const formInputsContainer = document.getElementById('form-inputs');
+const functionInputsContainer = document.getElementById('function-inputs');
+const feelingInputsContainer = document.getElementById('feeling-inputs');
 const suggestionsList = document.getElementById('suggestions-list');
 
 // Settings Elements
@@ -19,6 +19,12 @@ let isThinking = false;
 let lastAnalysisTime = 0;
 const ANALYSIS_DEBOUNCE = 3000; // 3 seconds
 
+const placeholders = {
+    form: "What tangible objects, meetings, or tools are involved?",
+    function: "What process or goal was being attempted?",
+    feeling: "What was the emotional state of the participants?"
+};
+
 // --- UI Logic ---
 
 // Show/Hide Settings
@@ -33,7 +39,38 @@ saveSettingsBtn.onclick = () => {
     if (apiKey) alert('API Key saved! The Polisher is now active.');
 };
 
+// Function to add a new input box
+function addInput(section) {
+    const container = document.getElementById(`${section}-inputs`);
+    const textarea = document.createElement('textarea');
+    textarea.className = 'dimension-input';
+    textarea.placeholder = placeholders[section];
+
+    // Add event listener to new textarea
+    textarea.addEventListener('input', () => analyzeSignal());
+
+    container.appendChild(textarea);
+    textarea.focus();
+}
+
+// Initial event listeners for existing inputs
+document.querySelectorAll('.dimension-input').forEach(el => {
+    el.addEventListener('input', () => analyzeSignal());
+});
+
+// Add button listeners
+document.querySelectorAll('.add-btn').forEach(btn => {
+    btn.onclick = () => addInput(btn.dataset.section);
+});
+
 // --- AI Logic ---
+
+function getAllInputsText(container) {
+    return Array.from(container.querySelectorAll('.dimension-input'))
+        .map(input => input.value.trim())
+        .filter(text => text.length > 0)
+        .join('\n- ');
+}
 
 async function analyzeSignal() {
     if (!apiKey || isThinking) return;
@@ -41,13 +78,13 @@ async function analyzeSignal() {
     const now = Date.now();
     if (now - lastAnalysisTime < ANALYSIS_DEBOUNCE) return;
 
-    const formData = formInput.value.trim();
-    const functionData = functionInput.value.trim();
-    const feelingData = feelingInput.value.trim();
+    const formData = getAllInputsText(formInputsContainer);
+    const functionData = getAllInputsText(functionInputsContainer);
+    const feelingData = getAllInputsText(feelingInputsContainer);
     const anchorText = document.getElementById('anchor-select').value;
 
-    // Only analyze if there's enough content
-    if (formData.length < 10 && functionData.length < 10 && feelingData.length < 10) return;
+    // Only analyze if there's enough content across all inputs
+    if (formData.length < 5 && functionData.length < 5 && feelingData.length < 5) return;
 
     isThinking = true;
     lastAnalysisTime = now;
@@ -57,7 +94,7 @@ async function analyzeSignal() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                system_instruction: {
+                contents: [{
                     parts: [{
                         text: `
                         You are the "AI Polisher" for the 3F System (Form, Function, Feeling).
@@ -75,15 +112,17 @@ async function analyzeSignal() {
                             - Function: The process/goal (decision-making, deployment).
                             - Feeling: The emotional state.
                             
-                        Example Question: "You mentioned 'the meeting' in Form—was that the Daily Standup or the Project Alpha Sync?"
-                    `}]
-                },
-                contents: [{
-                    parts: [{
-                        text: `
-                        Form Input: ${formData}
-                        Function Input: ${functionData}
-                        Feeling Input: ${feelingData}
+                        Current Signal State:
+                        Form Items:
+                        - ${formData || 'None provided'}
+                        
+                        Function Items:
+                        - ${functionData || 'None provided'}
+                        
+                        Feeling Items:
+                        - ${feelingData || 'None provided'}
+
+                        Provide ONE Socratic question to clarify these inputs.
                     `}]
                 }],
                 generationConfig: {
@@ -124,11 +163,4 @@ function addSuggestion(text) {
     suggestionsList.prepend(card);
 }
 
-// Listeners
-[formInput, functionInput, feelingInput].forEach(el => {
-    el.addEventListener('input', () => {
-        analyzeSignal();
-    });
-});
-
-console.log('3F System: Polisher initialized. Ready for API injection.');
+console.log('3F System: Dynamic Workspace initialized.');

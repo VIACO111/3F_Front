@@ -41,29 +41,39 @@
 
             <div class="canvas-grid">
                 <!-- FORM -->
-                <article class="canvas-section form">
+                <article class="canvas-section form" id="form-section">
                     <header class="canvas-header">
                         <h2>Form</h2>
                     </header>
-                    <textarea id="form-input"
-                        placeholder="What tangible objects, meetings, or tools are involved?"></textarea>
+                    <div class="input-group" id="form-inputs">
+                        <textarea class="dimension-input"
+                            placeholder="What tangible objects, meetings, or tools are involved?"></textarea>
+                    </div>
+                    <button class="add-btn" data-section="form">+</button>
                 </article>
 
                 <!-- FUNCTION -->
-                <article class="canvas-section function">
+                <article class="canvas-section function" id="function-section">
                     <header class="canvas-header">
                         <h2>Function</h2>
                     </header>
-                    <textarea id="function-input" placeholder="What process or goal was being attempted?"></textarea>
+                    <div class="input-group" id="function-inputs">
+                        <textarea class="dimension-input"
+                            placeholder="What process or goal was being attempted?"></textarea>
+                    </div>
+                    <button class="add-btn" data-section="function">+</button>
                 </article>
 
                 <!-- FEELING -->
-                <article class="canvas-section feeling">
+                <article class="canvas-section feeling" id="feeling-section">
                     <header class="canvas-header">
                         <h2>Feeling</h2>
                     </header>
-                    <textarea id="feeling-input"
-                        placeholder="What was the emotional state of the participants?"></textarea>
+                    <div class="input-group" id="feeling-inputs">
+                        <textarea class="dimension-input"
+                            placeholder="What was the emotional state of the participants?"></textarea>
+                    </div>
+                    <button class="add-btn" data-section="feeling">+</button>
                 </article>
             </div>
         </section>

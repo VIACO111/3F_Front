@@ -23,6 +23,10 @@ const placeholders = {
 // Function to add a new input box
 function addInput(section) {
     const container = document.getElementById(`${section}-inputs`);
+
+    // Limit to 3 input boxes
+    if (container.children.length >= 3) return;
+
     const textarea = document.createElement('textarea');
     textarea.className = 'dimension-input';
     textarea.placeholder = placeholders[section];

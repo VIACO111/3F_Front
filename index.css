@@ -213,8 +213,8 @@ main {
 
 .dimension-input {
     width: 100%;
-    min-height: 80px;
-    height: 80px;
+    min-height: 40px;
+    height: 40px;
     padding: 1rem;
     border: 1px solid var(--border-color);
     background: var(--form-bg);

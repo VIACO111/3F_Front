@@ -44,6 +44,7 @@ async function analyzeSignal() {
     const formData = formInput.value.trim();
     const functionData = functionInput.value.trim();
     const feelingData = feelingInput.value.trim();
+    const anchorText = document.getElementById('anchor-text').textContent;
 
     // Only analyze if there's enough content
     if (formData.length < 10 && functionData.length < 10 && feelingData.length < 10) return;
@@ -62,8 +63,12 @@ async function analyzeSignal() {
                         You are the "AI Polisher" for the 3F System (Form, Function, Feeling).
                         Your role is Socratic clarification to improve high-fidelity signals.
                         
+                        CONTEXT ANCHOR (The manager's focus):
+                        "${anchorText}"
+
                         - BE BRIEF: One or two sentences.
                         - BE SOCRATIC: Ask a question to help the pair clarify a specific point.
+                        - USE THE ANCHOR: Relate your question to the manager's context anchor if relevant.
                         - FOCUS ON RESOLUTION: Help distinguish between a specific event vs a general pattern.
                         - AXES:
                             - Form: The tangible (meetings, tools, policies).
@@ -71,9 +76,6 @@ async function analyzeSignal() {
                             - Feeling: The emotional state.
                             
                         Example Question: "You mentioned 'the meeting' in Form—was that the Daily Standup or the Project Alpha Sync?"
-                        
-                        Current Context:
-                        The pair is reflecting on their work.
                     `}]
                 },
                 contents: [{

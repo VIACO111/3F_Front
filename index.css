@@ -200,6 +200,22 @@ main {
 .anchor-text {
     font-style: italic;
     color: var(--text-primary);
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px dashed transparent;
+    transition: all 0.2s;
+    outline: none;
+}
+
+.anchor-text:hover {
+    background: #fdfdfd;
+    border-color: var(--border-color);
+}
+
+.anchor-text:focus {
+    background: white;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
 }
 
 /* 3F Canvas */

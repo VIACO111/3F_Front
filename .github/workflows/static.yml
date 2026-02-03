@@ -33,6 +33,12 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v4
+      - name: Inject API Key
+        env:
+          GEMINI_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          sed -i "s/YOUR_API_KEY_HERE/$GEMINI_KEY/g" app.js
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -12,7 +12,7 @@ const auditStatusText = auditStatus.querySelector('span');
 const saveBtn = document.getElementById('save-btn');
 
 // State
-let apiKey = 'AIzaSyAcPZs9Wv1sldRUq33LE_pgY9mvWPqRE6c';
+let apiKey = 'YOUR_API_KEY_HERE';
 let isThinking = false;
 let isAuditPassed = false;
 
@@ -80,12 +80,18 @@ function getAllInputsText(container) {
 
 // 1. Polish Function (Socratic Suggestions)
 async function polishSignal() {
-    if (!apiKey || isThinking) return;
+    console.log("Polish button clicked");
+    if (!apiKey || isThinking) {
+        console.log("Polish blocked: apiKey missing or isThinking");
+        return;
+    }
 
     const formData = getAllInputsText(formInputsContainer);
     const functionData = getAllInputsText(functionInputsContainer);
     const feelingData = getAllInputsText(feelingInputsContainer);
     const anchorText = document.getElementById('anchor-select').value;
+
+    console.log("Inputs:", { formData, functionData, feelingData });
 
     if (!formData && !functionData && !feelingData) {
         alert("Please enter some text before using Polish.");
@@ -102,7 +108,8 @@ async function polishSignal() {
     suggestionsList.prepend(loader);
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+        console.log("Sending request to Gemini...");
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -148,17 +155,32 @@ async function polishSignal() {
             })
         });
 
+        if (!response.ok) {
+            let errorBody;
+            try {
+                errorBody = await response.text();
+            } catch (e) {
+                errorBody = "Could not read error body";
+            }
+            console.error("API Error Details:", errorBody);
+            throw new Error(`API Error: ${response.status} ${response.statusText} - ${errorBody}`);
+        }
+
         const data = await response.json();
+        console.log("Gemini Response:", data);
         loader.remove();
 
-        if (data.candidates && data.candidates[0].content.parts[0].text) {
+        if (data.candidates && data.candidates[0].content && data.candidates[0].content.parts[0].text) {
             const suggestion = data.candidates[0].content.parts[0].text;
             addSuggestion(suggestion);
+        } else {
+            console.warn("No content in response", data);
+            alert("The AI had no suggestions (Response was empty or filtered).");
         }
     } catch (error) {
         console.error('3F Polisher Error:', error);
         loader.remove();
-        alert('AI Service Unavailable');
+        alert(`AI Service Error: ${error.message}`);
     } finally {
         isThinking = false;
         polishBtn.disabled = false;
@@ -187,7 +209,7 @@ async function auditSignal() {
     suggestionsList.innerHTML = '';
 
     try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

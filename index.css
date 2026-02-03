@@ -144,24 +144,16 @@ main {
     font-weight: 600;
 }
 
-.dimension-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    color: white;
+.canvas-section.form h2 {
+    color: var(--form-accent);
 }
 
-.canvas-section.form .dimension-tag {
-    background: var(--form-accent);
+.canvas-section.function h2 {
+    color: var(--function-accent);
 }
 
-.canvas-section.function .dimension-tag {
-    background: var(--function-accent);
-}
-
-.canvas-section.feeling .dimension-tag {
-    background: var(--feeling-accent);
+.canvas-section.feeling h2 {
+    color: var(--feeling-accent);
 }
 
 textarea {

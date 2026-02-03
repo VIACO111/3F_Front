@@ -17,11 +17,11 @@ The **3F System** is a human-centric organizational feedback platform designed t
 
 All input is dissected into three distinct dimensions to enable non-punitive analysis:
 
-| Axis | Layer | Description | Examples |
-| --- | --- | --- | --- |
-| **Form** | Structural | The tangible objects or structures involved. | A specific meeting, a PDF strategy, a software tool, a policy. |
-| **Function** | Operational | The process or goal being attempted. | Decision-making, resource allocation, communication, deployment. |
-| **Feeling** | Human | The emotional state of the participants. | Anxiety, clarity, motivation, disconnection, frustration. |
+| Axis | Description | Examples |
+| --- | --- | --- |
+| **Form** | The tangible objects or structures involved. | A specific meeting, a PDF strategy, a software tool, a policy. |
+| **Function** | The process or goal being attempted. | Decision-making, resource allocation, communication, deployment. |
+| **Feeling** | The emotional state of the participants. | Anxiety, clarity, motivation, disconnection, frustration. |
 
 ---
 

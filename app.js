@@ -14,7 +14,7 @@ const closeSettingsBtn = document.getElementById('close-settings');
 const apiKeyInput = document.getElementById('api-key-input');
 
 // State
-let apiKey = localStorage.getItem('3f_gemini_api_key') || '';
+let apiKey = localStorage.getItem('3f_gemini_api_key') || 'AIzaSyAcPZs9Wv1sldRUq33LE_pgY9mvWPqRE6c';
 let isThinking = false;
 let lastAnalysisTime = 0;
 const ANALYSIS_DEBOUNCE = 3000; // 3 seconds

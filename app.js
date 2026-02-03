@@ -6,15 +6,8 @@ const functionInputsContainer = document.getElementById('function-inputs');
 const feelingInputsContainer = document.getElementById('feeling-inputs');
 const suggestionsList = document.getElementById('suggestions-list');
 
-// Settings Elements
-const settingsBtn = document.getElementById('settings-btn');
-const settingsModal = document.getElementById('settings-modal');
-const saveSettingsBtn = document.getElementById('save-settings');
-const closeSettingsBtn = document.getElementById('close-settings');
-const apiKeyInput = document.getElementById('api-key-input');
-
 // State
-let apiKey = localStorage.getItem('3f_gemini_api_key') || 'AIzaSyAcPZs9Wv1sldRUq33LE_pgY9mvWPqRE6c';
+let apiKey = 'AIzaSyAcPZs9Wv1sldRUq33LE_pgY9mvWPqRE6c';
 let isThinking = false;
 let lastAnalysisTime = 0;
 const ANALYSIS_DEBOUNCE = 3000; // 3 seconds
@@ -26,18 +19,6 @@ const placeholders = {
 };
 
 // --- UI Logic ---
-
-// Show/Hide Settings
-settingsBtn.onclick = () => settingsModal.classList.add('active');
-closeSettingsBtn.onclick = () => settingsModal.classList.remove('active');
-apiKeyInput.value = apiKey;
-
-saveSettingsBtn.onclick = () => {
-    apiKey = apiKeyInput.value.trim();
-    localStorage.setItem('3f_gemini_api_key', apiKey);
-    settingsModal.classList.remove('active');
-    if (apiKey) alert('API Key saved! The Polisher is now active.');
-};
 
 // Function to add a new input box
 function addInput(section) {

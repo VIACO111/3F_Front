@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 3F System | Organizational Signal & Sense-Making</title>
+    <meta name="description" content="A human-centric organizational feedback platform for socially verified shared experiences.">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="logo">3F System</div>
+        <div class="pair-badge">
+            <span>Active Pair:</span>
+            <strong>Maya & Alex</strong>
+            <span class="perspective">| Product Team</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="workspace">
+            <div class="anchor-card">
+                <h3>Manager's Context Anchor</h3>
+                <p class="anchor-text">"We are currently in the final sprint of Project Alpha. Our focus is on stabilization and documentation before the Q1 hand-off."</p>
+            </div>
+
+            <div class="canvas-grid">
+                <!-- FORM -->
+                <article class="canvas-section form">
+                    <header class="canvas-header">
+                        <h2>Form</h2>
+                        <span class="dimension-tag">Structural</span>
+                    </header>
+                    <textarea id="form-input" placeholder="What tangible objects, meetings, or tools are involved?"></textarea>
+                </article>
+
+                <!-- FUNCTION -->
+                <article class="canvas-section function">
+                    <header class="canvas-header">
+                        <h2>Function</h2>
+                        <span class="dimension-tag">Operational</span>
+                    </header>
+                    <textarea id="function-input" placeholder="What process or goal was being attempted?"></textarea>
+                </article>
+
+                <!-- FEELING -->
+                <article class="canvas-section feeling">
+                    <header class="canvas-header">
+                        <h2>Feeling</h2>
+                        <span class="dimension-tag">Human</span>
+                    </header>
+                    <textarea id="feeling-input" placeholder="What was the emotional state of the participants?"></textarea>
+                </article>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <div class="polisher-header">
+                <h2>AI Polisher</h2>
+            </div>
+            <div class="suggestions-list" id="suggestions-list">
+                <!-- Suggestions will be injected here -->
+                <div class="suggestion-card">
+                    <p>Socratic Suggestion: You mentioned 'the meeting' in Form. Was that the Daily Standup or the Project Alpha Sync?</p>
+                    <div class="suggestion-actions">
+                        <button class="btn primary">Apply Clarification</button>
+                        <button class="btn">Dismiss</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-info">
+                All raw text remains private to this Pair. Only 3F Dimensions are aggregated.
+            </div>
+        </aside>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

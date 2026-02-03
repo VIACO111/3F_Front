@@ -213,8 +213,8 @@ main {
 
 .dimension-input {
     width: 100%;
-    min-height: 40px;
-    height: 40px;
+    min-height: 60px;
+    height: 60px;
     padding: 1rem;
     border: 1px solid var(--border-color);
     background: var(--form-bg);
@@ -348,6 +348,24 @@ main {
     background: var(--accent-color);
     color: white;
     border-color: var(--accent-color);
+}
+
+.btn.secondary {
+    background: white;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn.secondary:hover {
+    border-color: var(--accent-color);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #e5e7eb;
+    color: #9ca3af;
+    border-color: #e5e7eb;
 }
 
 /* Utility */

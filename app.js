@@ -44,7 +44,7 @@ async function analyzeSignal() {
     const formData = formInput.value.trim();
     const functionData = functionInput.value.trim();
     const feelingData = feelingInput.value.trim();
-    const anchorText = document.getElementById('anchor-text').textContent;
+    const anchorText = document.getElementById('anchor-select').value;
 
     // Only analyze if there's enough content
     if (formData.length < 10 && functionData.length < 10 && feelingData.length < 10) return;

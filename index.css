@@ -197,23 +197,32 @@ main {
     margin-bottom: 0.75rem;
 }
 
-.anchor-text {
+.anchor-dropdown {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
     font-style: italic;
     color: var(--text-primary);
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px dashed transparent;
-    transition: all 0.2s;
-    outline: none;
-}
-
-.anchor-text:hover {
-    background: #fdfdfd;
-    border-color: var(--border-color);
-}
-
-.anchor-text:focus {
     background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+.anchor-dropdown:hover {
+    border-color: var(--accent-color);
+    background-color: #fafafa;
+}
+
+.anchor-dropdown:focus {
     border-color: var(--accent-color);
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
 }

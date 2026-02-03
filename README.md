@@ -9,8 +9,9 @@ This project is a static web application designed to showcase the "3F Editor" wo
 ### Features
 
 - **Grid-paper Aesthetic:** A clean, professional journaling environment.
-- **3F Canvas:** Integrated entry for Form, Function, and Feeling labels.
-- **AI Polisher (Mock):** Real-time Socratic suggestions to improve data quality.
+- **Dynamic 3F Canvas:** Add multiple vertical signals per category (Form, Function, Feeling) using the simplified **"+" interaction**.
+- **Strategic Anchor Dropdown:** Choose from predefined management priorities to guide the AI's context.
+- **AI Polisher (Gemini 1.5 Flash):** Real-time Socratic suggestions tailored to both your inputs and the selected management anchor.
 
 ### Deployment
 

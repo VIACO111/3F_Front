@@ -68,14 +68,15 @@ The system is built as a self-hosted, event-driven architecture using an **Orche
 ### The Workspace (The 3F Editor)
 
 * **Identity:** Displays the active Pair and the Perspective (Role, Team, or Organisation).
-* **3F Canvas:** Three distinct text areas for Form, Function, and Feeling.
-* **Manager's Anchor:** A UI element showing the Manager's "Team Context" to ground the Pair's reflection.
+* **3F Canvas:** A vertical list of dynamic text boxes for Form, Function, and Feeling. Pairs can add multiple "signals" per category using the **"+" button**.
+* **Manager's Strategic Anchor:** A dropdown menu containing high-level strategic priorities (e.g., Optimising 1CX/Sales, Eliminating Deployment Risks) that contextualizes the Pair's reflection.
 
 ### The AI Polisher (The Logic)
 
-* The AI monitors the 3F inputs in real-time.
-* It provides **Socratic Suggestions** in a sidebar.
-* **Goal:** Increase dataset quality by asking: *"You mentioned 'the meeting'—was that the Daily Standup or the Project Alpha Sync?"*
+* The AI monitors all 3F inputs in real-time.
+* It leverages the selected **Strategic Anchor** to provide contextually relevant advice.
+* It provides **Socratic Suggestions** in a sidebar as the Pair types.
+* **Goal:** Increase dataset quality by asking: *"Was that meeting about the specific cloud migration technical hurdles, or more about the general timeline?"*
 
 ---
 

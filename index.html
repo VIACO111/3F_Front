@@ -13,10 +13,20 @@
 <body>
     <header>
         <div class="logo">3F System</div>
-        <div class="pair-badge">
-            <span>Active Pair:</span>
-            <strong>Maya & Alex</strong>
-            <span class="perspective">| Product Team</span>
+        <div class="header-actions">
+            <div class="pair-badge">
+                <span>Active Pair:</span>
+                <strong>Maya & Alex</strong>
+                <span class="perspective">| Product Team</span>
+            </div>
+            <button id="settings-btn" class="btn-icon" title="AI Settings">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                    </path>
+                </svg>
+            </button>
         </div>
     </header>
 
@@ -77,6 +87,20 @@
             </div>
         </aside>
     </main>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <h2>AI Polisher Settings</h2>
+            <p>Enter your Google AI Studio (Gemini) API Key to enable the real-time AI Polisher.</p>
+            <input type="password" id="api-key-input" placeholder="Enter API Key...">
+            <div class="modal-actions">
+                <button id="save-settings" class="btn primary">Save & Connect</button>
+                <button id="close-settings" class="btn">Close</button>
+            </div>
+            <p class="api-note">Key is stored locally in your browser and never sent to our servers.</p>
+        </div>
+    </div>
 
     <script src="app.js"></script>
 </body>
